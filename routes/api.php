@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\api\ApiFeedback;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::get('/feedback', [ApiFeedback::class, 'index']);
+Route::post('/feedback', [ApiFeedback::class, 'input_feedback']);

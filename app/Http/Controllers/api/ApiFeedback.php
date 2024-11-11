@@ -25,7 +25,7 @@ class ApiFeedback extends Controller
         ], 400);
     }
 
-    public function input_feedback()
+    public function input_feedback(Request $request)
     {
         $validasi = Validator::make(request()->all(), [
             'name' => 'required',
@@ -45,9 +45,9 @@ class ApiFeedback extends Controller
         }
 
         $data = [
-            'name' => request('name'),
-            'email' => request('email'),
-            'comments' => request('comments'),
+            'name' => $request->name,
+            'email' => $request->email,
+            'comments' => $request->comments,
         ];
 
         $save = Feedback::create($data);
